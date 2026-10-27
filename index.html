@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>kompas — подбор цифровых сервисов</title>
+  <meta name="description" content="Расскажите, что вам нужно, — подберём подходящий цифровой сервис и объясним, почему именно он.">
+
+  <meta property="og:title" content="kompas — подбор цифровых сервисов">
+  <meta property="og:description" content="Расскажите, что вам нужно, — подберём подходящий сервис и объясним выбор.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%237A5CFF'/><path d='M16 6l4 10-4-2-4 2z' fill='white'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;480;500;560;640;660;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">К содержимому</a>
+
+<!-- ═══════ ШАПКА ═══════ -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr__in">
+    <a class="brand" href="#top" aria-label="kompas — на главную">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="9" fill="url(#bg1)"/>
+        <path d="M16 7.5 20.6 18 16 15.6 11.4 18z" fill="#fff"/>
+        <path d="M16 24.5 11.4 14 16 16.4 20.6 14z" fill="#fff" opacity=".38"/>
+        <defs>
+          <linearGradient id="bg1" x1="0" y1="0" x2="32" y2="32">
+            <stop stop-color="#8D6BFF"/><stop offset="1" stop-color="#5B3BE8"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="brand__name">kompas</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <a class="nav__a" href="#categories">Категории</a>
+      <a class="nav__a" href="#how">Как это работает</a>
+      <a class="nav__a" href="#example">Пример подбора</a>
+      <a class="nav__a" href="#why">Почему нам верить</a>
+    </nav>
+
+    <div class="hdr__right">
+      <button class="iconbtn" id="themeBtn" type="button" aria-label="Переключить тему">
+        <svg class="ic ic--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.8 6.8 0 0 0 9.7 9.7z"/></svg>
+        <svg class="ic ic--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+      <a class="btn btn--ghost btn--s hdr__cta" href="#top">Подобрать сервис</a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ═══════ ПЕРВЫЙ ЭКРАН ═══════ -->
+  <section class="hero" id="top">
+    <div class="hero__aura" aria-hidden="true"></div>
+    <div class="hero__grid" aria-hidden="true"></div>
+
+    <div class="wrap hero__in">
+      <p class="pill reveal" data-d="0">
+        <span class="pill__dot"></span>
+        Бета · подбор по 60+ параметрам
+      </p>
+
+      <h1 class="hero__h reveal" data-d="70">
+        Не знаешь,<br class="br-m">
+        какой сервис выбрать?</h1>
+
+      <p class="hero__sub reveal" data-d="140">
+        Опишите задачу обычными словами — мы сравним варианты,
+        покажем плюсы и минусы и объясним, почему советуем именно этот.
+      </p>
+
+      <!-- ПОИСК -->
+      <form class="search reveal" data-d="200" id="askForm" role="search">
+        <div class="search__box">
+          <svg class="search__ic" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>
+          </svg>
+          <label class="sr-only" for="ask">Опишите, что вам нужно</label>
+          <input
+            class="search__input"
+            id="ask"
+            name="ask"
+            type="text"
+            autocomplete="off"
+            placeholder="Например: какой VPN лучше для iPhone и стриминга"
+          >
+          <button class="btn btn--primary search__btn" type="submit">
+            <span class="search__btn-txt">Подобрать</span>
+            <svg class="search__send" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg>
+          </button>
+        </div>
+
+        <div class="chips" role="group" aria-label="Примеры запросов">
+          <span class="chips__lbl">Попробуйте:</span>
+          <button class="chip" type="button" data-q="Какой VPN лучше для iPhone и стриминга">VPN для iPhone</button>
+          <button class="chip" type="button" data-q="Нужен AI-сервис для генерации картинок для соцсетей">AI для картинок</button>
+          <button class="chip" type="button" data-q="Хостинг для небольшого сайта-портфолио до 500 рублей в месяц">Хостинг до 500 ₽</button>
+          <button class="chip" type="button" data-q="Где вести бухгалтерию небольшой студии">Бухгалтерия для студии</button>
+        </div>
+
+        <p class="search__note">
+          Бесплатно · без регистрации · ответ за 30 секунд
+        </p>
+      </form>
+
+      <dl class="metrics reveal" data-d="260">
+        <div><dt>сервисов в базе</dt><dd>3 800</dd></div>
+        <div><dt>категорий</dt><dd>42</dd></div>
+        <div><dt>средний ответ</dt><dd>30 сек</dd></div>
+        <div><dt>обновление цен</dt><dd>каждый день</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ═══════ КАТЕГОРИИ ═══════ -->
+  <section class="sec" id="categories">
+    <div class="wrap">
+      <header class="sec__head">
+        <p class="eyebrow reveal">Категории</p>
+        <h2 class="sec__h reveal" data-d="60">С чего начать поиск</h2>
+        <p class="sec__lead reveal" data-d="110">
+          Можно выбрать направление — или сразу спросить своими словами.
+        </p>
+      </header>
+
+      <div class="cats">
+        <a class="cat reveal" data-d="0" href="#example">
+          <div class="cat__top">
+            <span class="cat__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M4.2 7.5l2.6 1.5M17.2 15l2.6 1.5M4.2 16.5l2.6-1.5M17.2 9l2.6-1.5"/><circle cx="12" cy="12" r="3.4"/></svg>
+            </span>
+            <span class="cat__arrow" aria-hidden="true">↗</span>
+          </div>
+          <h3>AI-сервисы</h3>
+          <p>Текст, изображения, код, видео, автоматизация рутины.</p>
+          <span class="cat__meta">412 сервисов</span>
+        </a>
+
+        <a class="cat reveal" data-d="70" href="#example">
+          <div class="cat__top">
+            <span class="cat__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3l7.5 3.5v5.2c0 4.4-3.1 7.8-7.5 9.3-4.4-1.5-7.5-4.9-7.5-9.3V6.5z"/><path d="M9.2 12.2l2.1 2.1 3.8-4"/></svg>
+            </span>
+            <span class="cat__arrow" aria-hidden="true">↗</span>
+          </div>
+          <h3>VPN и приватность</h3>
+          <p>Скорость, страны, устройства, стриминг, логи.</p>
+          <span class="cat__meta">186 сервисов</span>
+        </a>
+
+        <a class="cat reveal" data-d="140" href="#example">
+          <div class="cat__top">
+            <span class="cat__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 7h.01M7 17h.01"/></svg>
+            </span>
+            <span class="cat__arrow" aria-hidden="true">↗</span>
+          </div>
+          <h3>Хостинг и домены</h3>
+          <p>Скорость, поддержка, бэкапы, цена за год.</p>
+          <span class="cat__meta">240 сервисов</span>
+        </a>
+
+        <a class="cat reveal" data-d="210" href="#example">
+          <div class="cat__top">
+            <span class="cat__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18"/></svg>
+            </span>
+            <span class="cat__arrow" aria-hidden="true">↗</span>
+          </div>
+          <h3>Бизнес-сервисы</h3>
+          <p>CRM, учёт, задачи, рассылки, приём платежей.</p>
+          <span class="cat__meta">318 сервисов</span>
+        </a>
+      </div>
+
+      <p class="cats__more reveal">
+        Скоро: конструкторы сайтов, мобильные приложения, аналитика, обучение.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════ ТРИ ШАГА ═══════ -->
+  <section class="sec sec--alt" id="how">
+    <div class="wrap">
+      <header class="sec__head">
+        <p class="eyebrow reveal">Как это работает</p>
+        <h2 class="sec__h reveal" data-d="60">Три шага вместо десяти вкладок</h2>
+      </header>
+
+      <ol class="steps">
+        <li class="step reveal" data-d="0">
+          <span class="step__n">01</span>
+          <h3>Опишите задачу</h3>
+          <p>Обычными словами: «нужен VPN для iPhone, смотрю Netflix в 4K». Не нужно знать терминов и названий сервисов.</p>
+        </li>
+        <li class="step reveal" data-d="90">
+          <span class="step__n">02</span>
+          <h3>Мы разбираем запрос</h3>
+          <p>Выделяем важное: устройство, бюджет, страну, уровень подготовки. Отсекаем то, что не подходит по объективным параметрам.</p>
+        </li>
+        <li class="step reveal" data-d="180">
+          <span class="step__n">03</span>
+          <h3>Получаете 2–3 варианта</h3>
+          <p>С оценкой совпадения, честными минусами и объяснением выбора. Решение остаётся за вами.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══════ ПРИМЕР ПОДБОРА ═══════ -->
+  <section class="sec" id="example">
+    <div class="wrap">
+      <header class="sec__head">
+        <p class="eyebrow reveal">Пример подбора</p>
+        <h2 class="sec__h reveal" data-d="60">Так выглядит ответ</h2>
+        <p class="sec__lead reveal" data-d="110">
+          Ниже — демонстрационные данные на вымышленных сервисах, чтобы показать структуру.
+        </p>
+      </header>
+
+      <div class="demo reveal" data-d="150">
+        <div class="demo__q">
+          <span class="demo__ava" aria-hidden="true">Вы</span>
+          <p>Какой VPN лучше для iPhone и стриминга — Netflix и YouTube в 4K, без тормозов</p>
+        </div>
+
+        <div class="demo__a">
+          <div class="demo__ahead">
+            <span class="demo__badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.4 5.3 5.6.7-4.1 3.9 1 5.6-4.9-2.7-4.9 2.7 1-5.6L4 8l5.6-.7z"/></svg>
+              Подборка из 3 вариантов
+            </span>
+            <span class="demo__time">28 сек</span>
+          </div>
+
+          <p class="demo__summary">
+            Для стриминга в 4K на iPhone важны скорость на дальних серверах и наличие
+            выделенных IP для медиа. Вот три варианта, которые проходят по этим критериям.
+          </p>
+
+          <div class="results">
+            <article class="svc svc--best">
+              <div class="svc__head">
+                <span class="svc__logo" aria-hidden="true">A</span>
+                <div>
+                  <h3>Aurora VPN</h3>
+                  <p class="svc__mode">Оптимальный выбор</p>
+                </div>
+                <span class="svc__match"><b>94</b>%</span>
+              </div>
+              <div class="svc__bars">
+                <div><span>Скорость</span><i style="--v:96%"></i></div>
+                <div><span>Стриминг</span><i style="--v:92%"></i></div>
+                <div><span>Цена</span><i style="--v:74%"></i></div>
+              </div>
+              <p class="svc__why">
+                <b>Почему:</b> держит 4K на серверах США и Нидерландов, есть готовые профили для iOS.
+              </p>
+              <ul class="svc__pros">
+                <li class="p">Быстрое подключение в один тап</li>
+                <li class="p">Не режет скорость на медиа-серверах</li>
+                <li class="m">Дороже среднего на 20%</li>
+              </ul>
+              <div class="svc__foot">
+                <span class="svc__price">≈ 480 ₽ / мес</span>
+                <span class="svc__cta">Подробнее →</span>
+              </div>
+            </article>
+
+            <article class="svc">
+              <div class="svc__head">
+                <span class="svc__logo svc__logo--2" aria-hidden="true">T</span>
+                <div>
+                  <h3>Tunnel One</h3>
+                  <p class="svc__mode">Если важен бюджет</p>
+                </div>
+                <span class="svc__match"><b>88</b>%</span>
+              </div>
+              <div class="svc__bars">
+                <div><span>Скорость</span><i style="--v:84%"></i></div>
+                <div><span>Стриминг</span><i style="--v:86%"></i></div>
+                <div><span>Цена</span><i style="--v:95%"></i></div>
+              </div>
+              <p class="svc__why">
+                <b>Почему:</b> лучшая цена на годовой тариф, стриминг работает, но скорость чуть ниже.
+              </p>
+              <ul class="svc__pros">
+                <li class="p">Дешевле всех в подборке</li>
+                <li class="p">10 устройств на одном аккаунте</li>
+                <li class="m">Поддержка только на английском</li>
+              </ul>
+              <div class="svc__foot">
+                <span class="svc__price">≈ 210 ₽ / мес</span>
+                <span class="svc__cta">Подробнее →</span>
+              </div>
+            </article>
+
+            <article class="svc">
+              <div class="svc__head">
+                <span class="svc__logo svc__logo--3" aria-hidden="true">N</span>
+                <div>
+                  <h3>Northline</h3>
+                  <p class="svc__mode">Если важна приватность</p>
+                </div>
+                <span class="svc__match"><b>81</b>%</span>
+              </div>
+              <div class="svc__bars">
+                <div><span>Скорость</span><i style="--v:78%"></i></div>
+                <div><span>Стриминг</span><i style="--v:72%"></i></div>
+                <div><span>Цена</span><i style="--v:80%"></i></div>
+              </div>
+              <p class="svc__why">
+                <b>Почему:</b> проверяемые логи и открытый код клиента. Для 4K подходит не везде.
+              </p>
+              <ul class="svc__pros">
+                <li class="p">Независимый аудит политики</li>
+                <li class="p">Оплата без привязки к аккаунту</li>
+                <li class="m">Меньше серверов для медиа</li>
+              </ul>
+              <div class="svc__foot">
+                <span class="svc__price">≈ 390 ₽ / мес</span>
+                <span class="svc__cta">Подробнее →</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="demo__foot">
+            <span>Данные о ценах и функциях — демонстрационные</span>
+            <a class="link" href="#top">Спросить про свой случай →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ ПРЕИМУЩЕСТВА ═══════ -->
+  <section class="sec sec--alt" id="why">
+    <div class="wrap">
+      <header class="sec__head">
+        <p class="eyebrow reveal">Принципы</p>
+        <h2 class="sec__h reveal" data-d="60">Почему нам можно верить</h2>
+        <p class="sec__lead reveal" data-d="110">
+          Рекомендация — это ответственность. Поэтому правила простые и публичные.
+        </p>
+      </header>
+
+      <div class="adv">
+        <article class="card reveal" data-d="0">
+          <span class="card__ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+          </span>
+          <h3>Одинаковые критерии</h3>
+          <p>Каждый сервис оценивается по одной и той же матрице параметров. Никаких скрытых исключений и «ручных» подкруток.</p>
+        </article>
+
+        <article class="card reveal" data-d="70">
+          <span class="card__ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3 1.8"/></svg>
+          </span>
+          <h3>Актуальные данные</h3>
+          <p>Цены и тарифы пересобираются ежедневно, функции — еженедельно. Устаревшие данные помечаем.</p>
+        </article>
+
+        <article class="card reveal" data-d="140">
+          <span class="card__ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3.5 19 6.5v5.3c0 4.4-2.9 7.9-7 9.3-4.1-1.4-7-4.9-7-9.3V6.5z"/><path d="M12 8.5v3.2M12 15h.01"/></svg>
+          </span>
+          <h3>Минусы не прячем</h3>
+          <p>В каждом варианте есть честный список недостатков. Если вариант плохой — мы так и скажем.</p>
+        </article>
+
+        <article class="card reveal" data-d="210">
+          <span class="card__ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 20V9.5M12 20V4.5M17 20v-6.5M4 20h16"/></svg>
+          </span>
+          <h3>Работает без нас</h3>
+          <p>Сервисы можно купить напрямую, минуя сайт. Рекомендация не зависит от того, есть ли у нас договорённость.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CTA ═══════ -->
+  <section class="sec cta-sec">
+    <div class="wrap">
+      <div class="cta reveal">
+        <div class="cta__glow" aria-hidden="true"></div>
+        <div class="cta__in">
+          <h2>Опишите задачу — подберём за 30 секунд</h2>
+          <p>Бесплатно и без регистрации. Начните с одного предложения.</p>
+          <form class="cta__form" id="askForm2">
+            <label class="sr-only" for="ask2">Что вам нужно</label>
+            <input class="cta__input" id="ask2" type="text" placeholder="Например: хостинг для портфолио до 500 ₽">
+            <button class="btn btn--primary" type="submit">Подобрать</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════ ФУТЕР ═══════ -->
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__top">
+      <div class="ftr__brand">
+        <a class="brand" href="#top">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="9" fill="url(#bg1)"/>
+            <path d="M16 7.5 20.6 18 16 15.6 11.4 18z" fill="#fff"/>
+            <path d="M16 24.5 11.4 14 16 16.4 20.6 14z" fill="#fff" opacity=".38"/>
+          </svg>
+          <span class="brand__name">kompas</span>
+        </a>
+        <p>Помогаем выбрать цифровой сервис без десяти вкладок и обзоров на два часа.</p>
+      </div>
+
+      <nav class="ftr__nav" aria-label="Навигация в подвале">
+        <div>
+          <h4>Продукт</h4>
+          <a href="#categories">Категории</a>
+          <a href="#how">Как это работает</a>
+          <a href="#example">Пример подбора</a>
+        </div>
+        <div>
+          <h4>Категории</h4>
+          <a href="#categories">AI-сервисы</a>
+          <a href="#categories">VPN</a>
+          <a href="#categories">Хостинг</a>
+          <a href="#categories">Бизнес-сервисы</a>
+        </div>
+        <div>
+          <h4>Компания</h4>
+          <a href="#why">Принципы</a>
+          <a href="#">О проекте</a>
+          <a href="#">Контакты</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="ftr__bottom">
+      <p>© <span id="yr">2026</span> kompas. Демонстрационный интерфейс.</p>
+      <div class="ftr__links">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Условия использования</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
